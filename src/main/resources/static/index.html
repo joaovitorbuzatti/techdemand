@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechDemand | Gestão de Demandas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topo">
+    <div>
+        <h1>TechDemand</h1>
+        <p>Sistema de gerenciamento de demandas para assistência técnica de hardware</p>
+    </div>
+</header>
+
+<main class="container">
+
+    <section class="cards-dashboard">
+        <div class="card">
+            <span>Total de Demandas</span>
+            <strong id="totalDemandas">0</strong>
+        </div>
+
+        <div class="card">
+            <span>Abertas</span>
+            <strong id="demandasAbertas">0</strong>
+        </div>
+
+        <div class="card">
+            <span>Em Manutenção</span>
+            <strong id="demandasManutencao">0</strong>
+        </div>
+
+        <div class="card">
+            <span>Finalizadas</span>
+            <strong id="demandasFinalizadas">0</strong>
+        </div>
+    </section>
+
+    <section class="area-principal">
+
+        <section class="formulario-card">
+            <h2 id="tituloFormulario">Cadastrar nova demanda</h2>
+
+            <form id="formDemanda">
+
+                <input type="hidden" id="demandaId">
+
+                <div class="grupo-form">
+                    <label for="nomeCliente">Nome do cliente</label>
+                    <input type="text" id="nomeCliente" placeholder="Ex: Carlos Henrique" required>
+                </div>
+
+                <div class="grupo-form">
+                    <label for="telefoneCliente">Telefone</label>
+                    <input type="text" id="telefoneCliente" placeholder="Ex: (17) 99999-0000" required>
+                </div>
+
+                <div class="grupo-form">
+                    <label for="tipoEquipamento">Tipo de equipamento</label>
+                    <select id="tipoEquipamento" required>
+                        <option value="">Selecione</option>
+                        <option value="COMPUTADOR">Computador</option>
+                        <option value="NOTEBOOK">Notebook</option>
+                        <option value="IMPRESSORA">Impressora</option>
+                        <option value="MONITOR">Monitor</option>
+                        <option value="PERIFERICO">Periférico</option>
+                        <option value="OUTRO">Outro</option>
+                    </select>
+                </div>
+
+                <div class="grupo-form">
+                    <label for="marca">Marca</label>
+                    <input type="text" id="marca" placeholder="Ex: Dell, Lenovo, HP" required>
+                </div>
+
+                <div class="grupo-form">
+                    <label for="modelo">Modelo</label>
+                    <input type="text" id="modelo" placeholder="Ex: Inspiron 15">
+                </div>
+
+                <div class="grupo-form">
+                    <label for="descricaoProblema">Descrição do problema</label>
+                    <textarea id="descricaoProblema" rows="4" placeholder="Descreva o problema informado pelo cliente" required></textarea>
+                </div>
+
+                <div class="grupo-form">
+                    <label for="observacoesTecnicas">Observações técnicas</label>
+                    <textarea id="observacoesTecnicas" rows="3" placeholder="Ex: Equipamento chegou sem carregador"></textarea>
+                </div>
+
+                <div class="linha-form">
+                    <div class="grupo-form">
+                        <label for="prioridade">Prioridade</label>
+                        <select id="prioridade" required>
+                            <option value="">Selecione</option>
+                            <option value="BAIXA">Baixa</option>
+                            <option value="MEDIA">Média</option>
+                            <option value="ALTA">Alta</option>
+                            <option value="URGENTE">Urgente</option>
+                        </select>
+                    </div>
+
+                    <div class="grupo-form">
+                        <label for="status">Status</label>
+                        <select id="status" required>
+                            <option value="ABERTA">Aberta</option>
+                            <option value="AGUARDANDO_DIAGNOSTICO">Aguardando diagnóstico</option>
+                            <option value="EM_MANUTENCAO">Em manutenção</option>
+                            <option value="AGUARDANDO_PECA">Aguardando peça</option>
+                            <option value="FINALIZADA">Finalizada</option>
+                            <option value="CANCELADA">Cancelada</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="botoes-form">
+                    <button type="submit" class="btn btn-salvar">Salvar demanda</button>
+                    <button type="button" id="btnCancelar" class="btn btn-cancelar">Cancelar edição</button>
+                </div>
+
+            </form>
+        </section>
+
+        <section class="lista-card">
+            <div class="cabecalho-lista">
+                <div>
+                    <h2>Demandas registradas</h2>
+                    <p>Acompanhe os equipamentos recebidos pela assistência técnica.</p>
+                </div>
+
+                <input type="text" id="campoBusca" placeholder="Buscar por cliente...">
+            </div>
+
+            <div id="mensagem" class="mensagem"></div>
+
+            <div class="tabela-container">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Cliente</th>
+                        <th>Equipamento</th>
+                        <th>Problema</th>
+                        <th>Prioridade</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                    </thead>
+
+                    <tbody id="tabelaDemandas">
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </section>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
